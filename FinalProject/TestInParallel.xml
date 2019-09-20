@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Parallel test suite" parallel="methods" thread-count="4">
+    <test name="Incercare">
+        <classes>
+            <class name="OwnersPageTests">
+                <methods>
+                    <include name="addNewOwner"/>
+
+                </methods>
+            </class>
+
+            <class name="OwnersPageTests">
+                <methods>
+
+                    <include name="checkTableHeader"/>
+
+                </methods>
+            </class>
+
+            <class name="OwnersPageTests">
+                <methods>
+
+                    <include name="checkTableTitle"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

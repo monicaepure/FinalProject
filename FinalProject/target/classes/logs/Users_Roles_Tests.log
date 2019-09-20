@@ -1,0 +1,24 @@
+[INFO ] 2019-09-20 16:56:51.921 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:56:57.120 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:57:01.939 [main] InitializeTests - Adding a new pet type
+[INFO ] 2019-09-20 16:57:01.939 [main] InitializeTests - Click on add a new pet type
+[INFO ] 2019-09-20 16:57:03.037 [main] InitializeTests - Enter the name of the pet type 
+[INFO ] 2019-09-20 16:57:03.185 [main] InitializeTests - Save the new type
+[INFO ] 2019-09-20 16:57:03.647 [main] InitializeTests - Verifying that the pet types is added
+[INFO ] 2019-09-20 16:57:03.751 [main] InitializeTests - Pet type Chameleon exist.
+[INFO ] 2019-09-20 16:57:04.482 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:57:08.983 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:57:13.659 [main] InitializeTests - Verifying that the pet types table header has a column named "Name"
+[INFO ] 2019-09-20 16:57:14.433 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:57:18.991 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:57:23.624 [main] InitializeTests - Verifying that the pet types table title is "Pet Types"
+[INFO ] 2019-09-20 16:57:24.390 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:57:29.428 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 16:57:34.323 [main] InitializeTests - Deleting a pet type
+[INFO ] 2019-09-20 16:57:34.323 [main] InitializeTests - Click on add a new pet type
+[INFO ] 2019-09-20 16:57:35.606 [main] InitializeTests - Enter the name of the pet type 
+[INFO ] 2019-09-20 16:57:35.696 [main] InitializeTests - Save the new type
+[INFO ] 2019-09-20 16:57:36.306 [main] InitializeTests - Pet type Cheetah is deleted.
+[INFO ] 2019-09-20 16:57:36.563 [main] InitializeTests - after refresh
+[INFO ] 2019-09-20 16:57:36.563 [main] InitializeTests - Verifying that the pet types is indeed deleted
+[INFO ] 2019-09-20 16:57:36.648 [main] InitializeTests - Pet type Cheetah doesn't exist.

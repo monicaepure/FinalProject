@@ -1,12 +1,15 @@
 package Pages.Owners;
 
+import Utils.InitializeTests;
 import Utils.NewUser;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddOwnerPage {
     public WebDriver driver;
-
+    public Logger LOGGER = LogManager.getLogger(InitializeTests.class);
     NewUser newUser = new NewUser();
 
     public AddOwnerPage(WebDriver driver) {
@@ -29,17 +32,65 @@ public class AddOwnerPage {
     public String telephone = newUser.getPhoneNo();
 
     //________________________Methods________________________
-    public void addOwner(){
-        System.out.println("Adding a new owner");
+
+    public void typeFirstName() {
+        LOGGER.info("Type first name");
         driver.findElement(firstNameField).sendKeys(firstName);
-        driver.findElement(lastNameField).sendKeys(lastName);
-        driver.findElement(addressField).sendKeys(address);
-        driver.findElement(cityField).sendKeys(city);
-        driver.findElement(telephoneField).sendKeys(telephone);
-        driver.findElement(submitButton).click();
     }
 
-    public void goToOwnerPage(){
+    public void typeLastName() {
+        LOGGER.info("Type last name");
+        driver.findElement(lastNameField).sendKeys(lastName);
+    }
+
+    public void typeAddress() {
+        LOGGER.info("Type address");
+        driver.findElement(addressField).sendKeys(address);
+    }
+
+    public void typeCity() {
+        LOGGER.info("Type city");
+        driver.findElement(cityField).sendKeys(city);
+    }
+
+    public void typeTelephone() {
+        LOGGER.info("Type telephone");
+        driver.findElement(telephoneField).sendKeys(telephone);
+    }
+
+    public void clickOnSubmit() {
+        LOGGER.info("Click on submit");
+
+        driver.findElement(submitButton).click();
+    }
+    //________________________Methods with Params________________________
+
+    public void typeFirstName(String firstNameP) {
+        LOGGER.info("Type first name");
+        driver.findElement(firstNameField).sendKeys(firstNameP);
+    }
+
+    public void typeLastName(String lastNameP) {
+        LOGGER.info("Type last name");
+        driver.findElement(lastNameField).sendKeys(lastNameP);
+    }
+
+    public void typeAddress(String addressP) {
+        LOGGER.info("Type address");
+        driver.findElement(addressField).sendKeys(addressP);
+    }
+
+    public void typeCity(String cityP) {
+        LOGGER.info("Type city");
+        driver.findElement(cityField).sendKeys(cityP);
+    }
+
+    public void typeTelephone(String telephoneP) {
+        LOGGER.info("Type telephone");
+        driver.findElement(telephoneField).sendKeys(telephoneP);
+    }
+
+    public void goToOwnerPage() {
         driver.findElement(backButton).click();
     }
 }

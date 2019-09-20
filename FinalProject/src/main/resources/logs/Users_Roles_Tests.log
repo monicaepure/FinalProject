@@ -1,0 +1,37 @@
+[INFO ] 2019-09-20 17:01:42.342 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 17:01:47.826 [main] InitializeTests - Click on veterinarians button
+[INFO ] 2019-09-20 17:01:47.920 [main] InitializeTests - Click on add a veterinarian
+[INFO ] 2019-09-20 17:01:48.174 [main] InitializeTests - Adding a new veterinarian
+[INFO ] 2019-09-20 17:01:48.174 [main] InitializeTests - Insert first name
+[INFO ] 2019-09-20 17:01:48.280 [main] InitializeTests - Insert last name
+[INFO ] 2019-09-20 17:01:48.362 [main] InitializeTests - Select speciality
+[INFO ] 2019-09-20 17:01:48.447 [main] InitializeTests - Submit entries
+[INFO ] 2019-09-20 17:01:49.169 [main] InitializeTests - Veterinarian Conrad Wuckert exists.
+[INFO ] 2019-09-20 17:01:49.905 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 17:01:54.500 [main] InitializeTests - Click on veterinarians button
+[INFO ] 2019-09-20 17:01:54.577 [main] InitializeTests - Click on all veterinarians
+[INFO ] 2019-09-20 17:01:55.659 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 17:02:00.244 [main] InitializeTests - Click on veterinarians button
+[INFO ] 2019-09-20 17:02:00.321 [main] InitializeTests - Click on all veterinarians
+[INFO ] 2019-09-20 17:02:01.214 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 17:02:05.633 [main] InitializeTests - Click on veterinarians button
+[INFO ] 2019-09-20 17:02:05.704 [main] InitializeTests - Click on add a veterinarian
+[INFO ] 2019-09-20 17:02:05.930 [main] InitializeTests - Adding a new veterinarian
+[INFO ] 2019-09-20 17:02:05.931 [main] InitializeTests - Insert first name
+[INFO ] 2019-09-20 17:02:06.017 [main] InitializeTests - Insert last name
+[INFO ] 2019-09-20 17:02:06.093 [main] InitializeTests - Select speciality
+[INFO ] 2019-09-20 17:02:06.178 [main] InitializeTests - Submit entries
+[INFO ] 2019-09-20 17:02:08.245 [main] InitializeTests - Deleting the veterinarian: Dedric Kling
+[INFO ] 2019-09-20 17:02:10.160 [main] InitializeTests - Veterinarian Dedric Kling doesn't exists.
+[INFO ] 2019-09-20 17:02:10.901 [main] InitializeTests - Starting browser
+[INFO ] 2019-09-20 17:02:15.324 [main] InitializeTests - Click on veterinarians button
+[INFO ] 2019-09-20 17:02:15.391 [main] InitializeTests - Click on add a veterinarian
+[INFO ] 2019-09-20 17:02:15.682 [main] InitializeTests - Adding a new veterinarian
+[INFO ] 2019-09-20 17:02:15.683 [main] InitializeTests - Insert first name
+[INFO ] 2019-09-20 17:02:15.765 [main] InitializeTests - Insert last name
+[INFO ] 2019-09-20 17:02:15.872 [main] InitializeTests - Select speciality
+[INFO ] 2019-09-20 17:02:15.958 [main] InitializeTests - Submit entries
+[INFO ] 2019-09-20 17:02:17.840 [main] InitializeTests - Editing the veterinarian: Rory Wintheiser
+[INFO ] 2019-09-20 17:02:18.914 [main] InitializeTests - Edit first name
+[INFO ] 2019-09-20 17:02:19.234 [main] InitializeTests - Verifying that the new veterinarian has been edited: Aladin Wintheiser
+[INFO ] 2019-09-20 17:02:19.920 [main] InitializeTests - Veterinarian Aladin Wintheiser exists.

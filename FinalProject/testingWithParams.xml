@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite with Params">
+    <test name="Owners with params">
+        <parameter name="firstName" value="Moni"/>
+        <parameter name="lastName" value="Boni"/>
+        <parameter name="address" value="Str Salcamilor"/>
+        <parameter name="city" value="Bucuresti"/>
+        <parameter name="telephone" value="0700500888"/>
+        <classes>
+            <class name="OwnersPageTests"></class>
+        </classes>
+    </test>
+</suite>

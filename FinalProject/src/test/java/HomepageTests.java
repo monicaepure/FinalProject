@@ -1,40 +1,31 @@
 import Pages.Homepage;
-import Utils.Header;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import Utils.InitializeTests;
+
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 
-public class HomepageTests {
-    WebDriver driver;
-    private String baseURL = "http://bhdtest.endava.com/petclinic/";
-    Homepage homepage;
 
-    @BeforeTest
-    public void beforeMethod() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().deleteAllCookies();
-        driver.get(baseURL);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+public class HomepageTests extends InitializeTests {
+
+    private Homepage homepage;
+
+    @BeforeClass
+    public void beforeMethod() throws FileNotFoundException, MalformedURLException {
+
         homepage = new Homepage(driver);
-
     }
 
     @Test
-    public void firstPageTest(){
-        Assert.assertTrue(homepage.isLogoDisplayed());
+    public void firstPageTest() {
+        LOGGER.info("Verifying that the homepage has the logo and the title displayed");
+
         Assert.assertTrue(homepage.getTitleName().equalsIgnoreCase("Welcome to Petclinic"));
+        Assert.assertTrue(homepage.isLogoDisplayed());
+
     }
 
-    @AfterTest
-    public void afterMethod(){
-        driver.close();
-        driver.quit();
-    }
 }

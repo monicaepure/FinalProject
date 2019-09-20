@@ -1,72 +1,130 @@
 import Pages.Owners.AddOwnerPage;
 import Pages.Owners.AllOwnersPage;
-import Utils.Header;
-import Utils.NewUser;
+import Pages.Header;
 
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import Pages.Owners.OwnerInformationPage;
+import Pages.Owners.OwnersPet;
+import Utils.DatabaseConnection;
+import Utils.InitializeTests;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-import java.util.concurrent.TimeUnit;
+import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
+import java.sql.SQLException;
+import java.util.List;
 
-public class OwnersPageTests {
-    WebDriver driver;
-    private String baseURL = "http://bhdtest.endava.com/petclinic/";
 
-    Header header;
-    AddOwnerPage addOwnerPage;
-    NewUser newUser;
-    AllOwnersPage allOwnersPage;
+public class OwnersPageTests extends InitializeTests {
 
-    @BeforeTest
-    public void beforeMethod() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().deleteAllCookies();
-        driver.get(baseURL);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+    private Header header;
+    private AddOwnerPage addOwnerPage;
+    private AllOwnersPage allOwnersPage;
+    private OwnerInformationPage ownerInformationPage;
+    private OwnersPet ownersPet;
+    private DatabaseConnection databaseConnection;
 
+    @BeforeMethod(groups = {"params", "regression"})
+    public void beforeClass() throws FileNotFoundException, MalformedURLException {
+        //startBrowser();
         header = new Header(driver);
         addOwnerPage = new AddOwnerPage(driver);
-        newUser = new NewUser();
         allOwnersPage = new AllOwnersPage(driver);
+        ownerInformationPage = new OwnerInformationPage(driver);
+        ownersPet = new OwnersPet(driver);
+        databaseConnection = new DatabaseConnection();
     }
 
-    @Test
+    @Test(groups = {("regression")})
     public void addNewOwner() {
         header.clickOnAddNewOwner();
-        addOwnerPage.addOwner();
+        addOwnerPage.typeFirstName();
+        addOwnerPage.typeLastName();
+        addOwnerPage.typeAddress();
+        addOwnerPage.typeCity();
+        addOwnerPage.typeTelephone();
+        addOwnerPage.clickOnSubmit();
         header.clickOnAllOwnersButton();
-        System.out.println("Verifying that the new owner has been added");
-        Assert.assertTrue(allOwnersPage.ownersTableContains(addOwnerPage.firstName + " "  + addOwnerPage.lastName));
+        LOGGER.info("Verifying that the new owner " + addOwnerPage.firstName + " " + addOwnerPage.lastName + "has been added");
+        Assert.assertTrue(allOwnersPage.ownersTableContains(addOwnerPage.firstName + " " + addOwnerPage.lastName));
     }
 
-    @Test
-    public void checkTableHeader(){
+    @Test(groups = {"params"})
+    @Parameters({"firstName", "lastName", "address", "city", "telephone"})
+    public void addNewOwnerParams(String firstName, String lastName, String address, String city, String telephone) {
+        header.clickOnAddNewOwner();
+        addOwnerPage.typeFirstName(firstName);
+        addOwnerPage.typeLastName(lastName);
+        addOwnerPage.typeAddress(address);
+        addOwnerPage.typeCity(city);
+        addOwnerPage.typeTelephone(telephone);
+        addOwnerPage.clickOnSubmit();
         header.clickOnAllOwnersButton();
-        System.out.println("Verifying that the owners table header has a column names \"Name\"");
+        LOGGER.info("Verifying that the new owner " + firstName + " " + lastName + "has been added");
+        Assert.assertTrue(allOwnersPage.ownersTableContains(firstName + " " + lastName));
+    }
+
+    @Test(groups = {("regression")})
+    public void checkTableHeader() {
+        header.clickOnAllOwnersButton();
+        LOGGER.info("Verifying that the owners table header has a column named \"Name\"");
         Assert.assertTrue(allOwnersPage.ownersTableHeaderContains("Name"));
+        LOGGER.info("Verifying that the owners table header has a column named \"Address\"");
         Assert.assertTrue(allOwnersPage.ownersTableHeaderContains("Address"));
+        LOGGER.info("Verifying that the owners table header has a column named \"City\"");
         Assert.assertTrue(allOwnersPage.ownersTableHeaderContains("City"));
+        LOGGER.info("Verifying that the owners table header has a column named \"Telephone\"");
         Assert.assertTrue(allOwnersPage.ownersTableHeaderContains("Telephone"));
+        LOGGER.info("Verifying that the owners table header has a column named \"Pets\"");
         Assert.assertTrue(allOwnersPage.ownersTableHeaderContains("Pets"));
     }
 
     @Test
     public void checkTableTitle() {
         header.clickOnAllOwnersButton();
-        System.out.println("Verifying that the owners table title is \"Owners\"");
-        Assert.assertTrue(allOwnersPage.getOwnersTableTitle().equalsIgnoreCase("owners"));
+        LOGGER.info("Verifying that the owners table title is \"Owners\"");
+        Assert.assertEquals(allOwnersPage.getOwnersTableTitle(), "Owners");
     }
 
-    @AfterTest
-    public void afterMethod(){
-        driver.close();
-        driver.quit();
+//    @Test(groups = {"params"})
+//    @Parameters({"petName","birthDate","type"})
+//    public void addPetToOwner(String petName,String birthDate,String type){
+//        header.clickOnAddNewOwner();
+//        addOwnerPage.typeFirstName();
+//        addOwnerPage.typeLastName();
+//        addOwnerPage.typeAddress();
+//        addOwnerPage.typeCity();
+//        addOwnerPage.typeTelephone();
+//        addOwnerPage.clickOnSubmit();
+//        String ownerName = addOwnerPage.firstName + " "  + addOwnerPage.lastName;
+//        allOwnersPage.clickOnOwner(ownerName);
+//        ownerInformationPage.clickOnAddNewPetButton();
+//        ownersPet.typeName(petName);
+//        ownersPet.typeBirthDate(birthDate);
+//        ownersPet.typePetType(type);
+//        ownersPet.clickOnSubmit();
+//        header.clickOnAllOwnersButton();
+//        A
+//    }
+
+    @Test(groups = {("regression")})
+    public void verifyDB() throws SQLException {
+        header.clickOnAddNewOwner();
+        addOwnerPage.typeFirstName();
+        addOwnerPage.typeLastName();
+        addOwnerPage.typeAddress();
+        addOwnerPage.typeCity();
+        addOwnerPage.typeTelephone();
+        addOwnerPage.clickOnSubmit();
+        String sqlStatement = "select * from owners";
+        LOGGER.info("Verifying that the new owner " + addOwnerPage.firstName + " " + addOwnerPage.lastName + "has been added");
+        List<String> names = databaseConnection.connectToDB(getCfg().getProperty("dbURL"), getCfg().getProperty("dbUser"), getCfg().getProperty("dbPass"), sqlStatement);
+        boolean booly = false;
+        for (String name : names) {
+            if (name.equalsIgnoreCase(addOwnerPage.firstName + " " + addOwnerPage.lastName))
+                booly = true;
+        }
+        Assert.assertTrue(booly);
     }
 }
